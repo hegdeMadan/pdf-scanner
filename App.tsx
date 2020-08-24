@@ -1,16 +1,40 @@
 import React from 'react';
-import { View, ToastAndroid, PermissionsAndroid } from 'react-native';
 import { RootNavigator } from './src/navigator';
-import { requestCameraPermission, requestStorageWritePermission } from './src/scripts/permissions';
+import { Provider } from 'react-redux';
+import {
+  requestCameraPermission,
+  requestStorageWritePermission,
+} from './src/scripts/permissions';
+import { createStore } from 'redux';
+import { rootReducer } from './src/store/reducers';
 
 class App extends React.Component {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      isPermissionAsked: false,
+    };
+  }
+
   componentDidMount() {
-    const isCameraAccessible = requestCameraPermission();
-    const isStorageAccessible = requestStorageWritePermission();
+    if (!this.state.isPermissionAsked) {
+      requestCameraPermission()
+        .then(() => {
+          requestStorageWritePermission();
+        })
+        .catch((err) => console.error('failed to get camera permission', err));
+      this.setState({ isPermissionAsked: true });
+    }
   }
 
   render() {
-    return <RootNavigator />;
+    const store = createStore(rootReducer);
+
+    return (
+      <Provider store={store}>
+        <RootNavigator />
+      </Provider>
+    );
   }
 }
 

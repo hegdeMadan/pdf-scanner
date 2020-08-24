@@ -16,6 +16,9 @@ import { screens } from '../navigator/constants';
 import { exportImageToPdf, copyImage } from '../scripts';
 
 class Scanner extends React.Component {
+  private pdfScannerElement: HTMLElement;
+  private deviceWidth: number;
+  private deviceHeight: number;
   constructor(props) {
     super(props);
     this.pdfScannerElement = React.createRef();
@@ -38,7 +41,7 @@ class Scanner extends React.Component {
     this.pdfScannerElement.current.capture();
   };
 
-  showToast = (isSaved) => {
+  showToast = (isSaved: boolean) => {
     if (isSaved) {
       ToastAndroid.show('Document Saved', ToastAndroid.LONG);
     } else {
@@ -46,7 +49,7 @@ class Scanner extends React.Component {
     }
   };
 
-  onExportSuccess = (filePath) => {
+  onExportSuccess = (filePath: string) => {
     console.log('success');
     this.setState({ pdfFile: filePath });
     this.showToast(true);
@@ -109,10 +112,13 @@ class Scanner extends React.Component {
             ref={this.pdfScannerElement}
             style={styles.scanner}
             onPictureTaken={(data) => this.cropPicture(data)}
+            onProcessingChange={(data: any) => console.log('processing::: ', data)}
             // manualOnly={true}
             overlayColor="rgba(255,130,0, 0.7)"
             enableTorch={false}
             quality={0.9}
+            brightness={10}
+            contrast={1.1}
             onRectangleDetect={({ stableCounter, lastDetectionType }) => {
               this.setState({
                 detection: { stableCounter, lastDetectionType },

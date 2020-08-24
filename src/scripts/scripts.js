@@ -1,7 +1,7 @@
 import { colors } from '../theme';
 import RNImageToPdf from 'react-native-image-to-pdf';
 import RNFetchBlob from 'rn-fetch-blob';
-import { requestStoragePermission } from './permissions';
+import { requestStorageWritePermission } from './permissions';
 
 export const getRandomColor = () => {
   const letters = '0123456789ABCDEF';
@@ -51,12 +51,12 @@ export const exportImageToPdf = async (
   }
 };
 
-export const copyImage = (imageData, successCallback) => {
+export const copyImage = (imageData, successCallback, failureCallback) => {
   const pathArr = imageData.path.split('/');
   const fileName = pathArr[pathArr.length - 1];
   const destinationPath = `${RNFetchBlob.fs.dirs.PictureDir}/${fileName}`;
   const pdfFileName = fileName.split('.')[0];
-  const isStorageAccessible = requestStoragePermission();
+  const isStorageAccessible = requestStorageWritePermission();
   if (isStorageAccessible) {
     RNFetchBlob.fs
       .cp(imageData.path, destinationPath)
@@ -67,6 +67,8 @@ export const copyImage = (imageData, successCallback) => {
       .catch((err) => {
         console.log('error copying', err);
       });
+  } else {
+    failureCallback();
+    console.log('no accesss to  storage');
   }
-  console.log('no accesss to  storage');
 };

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "81223637130",
+    "firebase_url": "https://u-scanner.firebaseio.com",
+    "project_id": "u-scanner",
+    "storage_bucket": "u-scanner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81223637130:android:29adac67ab5542eb40b573",
+        "android_client_info": {
+          "package_name": "com.uscanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81223637130-frmqh4ff96osngutp9idd8cq8bcm61p8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uscanner",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "81223637130-f96ltd68ol5glgpo4jbv44fbbdrrlbaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmisNTpTuEb0HKhBetJyG9RYUr8921eOI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81223637130-f96ltd68ol5glgpo4jbv44fbbdrrlbaj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
