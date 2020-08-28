@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactHTML, ReactNode } from 'react';
 import {
   View,
   StyleSheet,
@@ -118,7 +118,7 @@ class Scanner extends React.Component {
             enableTorch={false}
             quality={0.9}
             brightness={10}
-            contrast={1.1}
+            contrast={1.5}
             onRectangleDetect={({ stableCounter, lastDetectionType }) => {
               this.setState({
                 detection: { stableCounter, lastDetectionType },

@@ -12,6 +12,8 @@ target 'uscanner' do
 
   pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
 
+  pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth'
+
   target 'uscannerTests' do
     inherit! :complete
     # Pods for testing
