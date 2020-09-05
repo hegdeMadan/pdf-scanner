@@ -9,7 +9,7 @@ const {
   SIGN_OUT_ERROR,
 } = authAction;
 
-export const authReducer = (state = authState, action) => {
+export const authReducer = (state = authState(), action) => {
   switch (action.type) {
     case USER_SIGNED_IN:
       return {
@@ -18,6 +18,7 @@ export const authReducer = (state = authState, action) => {
       };
 
     case USER_SIGNED_OUT:
+      console.log('########################### action **', action)
       return {
         ...state,
         userSignedIn: false,

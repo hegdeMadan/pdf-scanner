@@ -1146,18 +1146,31 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.10.tgz#5dda643e19e587793bc2034dd9bf7398ad43d401"
   integrity sha512-rk4sWFsmtOw8oyx8SD3KSvawwaK7gRBSEIy2TAwURyGt+3TizssXP1r8nx3zY+R7v2vYYHXZ+k2/GULAT/bcaQ==
 
-"@react-native-firebase/app@^8.3.1":
-  version "8.3.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.3.1.tgz#3f083ee26f447237d8c51a070c52c92fec99b049"
-  integrity sha512-BIjzpvCnIJsyW8D+gXf1Z0Y4UxnEK6xhPsIfifAUMMA16G+dpkVFgqJexDHV2F75IQvFwHEde/FadtV799dQqg==
+"@react-native-community/progress-bar-android@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@react-native-community/progress-bar-android/-/progress-bar-android-1.0.3.tgz#a6adc7be7a531269869d653ad9e0cd3d093d7c1c"
+  integrity sha512-Xy+nTCibCLQ6Jy0YNlVwrO+m/j2el6PN8nVQcdgVqp+Jm1XTguq7xjxUV5spzYmVDIVx+zW7WKfkeSbhUk91Tg==
+
+"@react-native-community/progress-view@^1.0.3", "@react-native-community/progress-view@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/progress-view/-/progress-view-1.1.1.tgz#f1bdc46839addade6dd7224f807c2a8889382293"
+  integrity sha512-D87BwWYn/Gb0Hw7/kAXlcIoP1iKsIIweR8BbKqGRQIQd52Ls55Hup8jAA4iDM/3bLs5AHpyGFnKkKSV9k8JDaQ==
+  dependencies:
+    babel "^6.23.0"
+    babel-runtime "^6.26.0"
+
+"@react-native-firebase/app@^8.4.1":
+  version "8.4.1"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-8.4.1.tgz#69c941afa9a28bf28c4cfec8f53c3f82c35b06c5"
+  integrity sha512-EhEFgF5QBT6rtBqfK7m6LZmiEyWP6aLKLoCDvAaAmRNURXG0Ryr1T6KEjvrFuERnGkEk0KH/f2i1KB+BhThPWQ==
   dependencies:
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/auth@^9.1.1":
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-9.1.1.tgz#1c2488f795174b59fce15cc0560c2bc2c0e51760"
-  integrity sha512-OYm1ijNPbJSy34m1jF0oRCknekl7tbTsdX9lNkw19urwGI8bRGOgeVFvuu35JpJqiTYpQOSgKEPIT/GEDa02wg==
+"@react-native-firebase/auth@^9.1.2":
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-9.1.2.tgz#89da75378d34c1853851f1bd229d5f8bc5be9521"
+  integrity sha512-ph1MbYLSR9F0t9SmJdztcPGBhXyp5H0ttJVDLZmjws3r3L1+YFxm5dGOk0KSFdjcOUdX+GfPfR/dU6HgY5MMaQ==
 
 "@react-navigation/bottom-tabs@^5.6.1":
   version "5.8.0"
@@ -1453,6 +1466,9 @@
     lodash "^4.17.15"
     semver "^7.3.2"
     tsutils "^3.17.1"
+
+"@woonivers/react-native-document-scanner@../native_modules/react-native-document-scanner":
+  version "2.1.1"
 
 abab@^2.0.0:
   version "2.0.4"
@@ -1886,13 +1902,18 @@ babel-preset-jest@^25.5.0:
     babel-plugin-jest-hoist "^25.5.0"
     babel-preset-current-node-syntax "^0.1.2"
 
-babel-runtime@^6.22.0:
+babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
+
+babel@^6.23.0:
+  version "6.23.0"
+  resolved "https://registry.yarnpkg.com/babel/-/babel-6.23.0.tgz#d0d1e7d803e974765beea3232d4e153c0efb90f4"
+  integrity sha1-0NHn2APpdHZb7qMjLU4VPA77kPQ=
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -2403,6 +2424,11 @@ cross-spawn@^7.0.0:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
+
+crypto-js@^3.2.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.3.0.tgz#846dd1cce2f68aacfa156c8578f926a609b7976b"
+  integrity sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==
 
 css-select@^2.1.0:
   version "2.1.0"
@@ -5821,9 +5847,6 @@ react-native-document-picker@^3.5.3:
   resolved "https://registry.yarnpkg.com/react-native-document-picker/-/react-native-document-picker-3.5.4.tgz#4b9f261ea0d52e91d571670caaf55923ceb80f5f"
   integrity sha512-ZKGAa8ztQ7zA1eE95OCiNsI/Q6fiq1Q3es8MyOEakBkWcX9avWNYaJUrbv/8v80Vo4RzcNxsO3wT6a2hgfpz7A==
 
-react-native-document-scanner@../native_modules/react-native-document-scanner:
-  version "2.1.1"
-
 react-native-fs@^2.16.6:
   version "2.16.6"
   resolved "https://registry.yarnpkg.com/react-native-fs/-/react-native-fs-2.16.6.tgz#2901789a43210a35a0ef0a098019bbef3af395fd"
@@ -5863,6 +5886,16 @@ react-native-pdf-lib@^1.0.0:
   integrity sha512-XJ8d9gWbpVYLeS9kC/h/MY+lLKVWZfPiGJBrE9lz4pnVWiFwbH76LA3lGVurKlPxgcm/FZNzaXSKAcSYeDs+BA==
   dependencies:
     babel-preset-flow "^6.23.0"
+
+react-native-pdf@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-pdf/-/react-native-pdf-6.2.0.tgz#e6da125b407338b7bca15d7f776b70773c37304f"
+  integrity sha512-OSgF3+PryUl0GIPvZhCXT7VDv9LbvjC7LJgH3aFObCq0WRiiSGf9W1yrhaYmNV3FvL7ZARKF08h+k4LuFcTPNg==
+  dependencies:
+    "@react-native-community/progress-bar-android" "^1.0.3"
+    "@react-native-community/progress-view" "^1.0.3"
+    crypto-js "^3.2.0"
+    prop-types "^15.7.2"
 
 react-native-permissions@^2.1.5:
   version "2.1.5"

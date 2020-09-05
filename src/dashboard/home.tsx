@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import AntIcons from 'react-native-vector-icons/AntDesign';
-import { sizes, colors } from '../theme';
 import { moderateScale } from 'react-native-size-matters';
+import RNFetchBlob from 'rn-fetch-blob';
+import { sizes, colors } from '../theme';
 import { Header, Label } from '../components';
 import { screens } from '../navigator/constants';
-import { noFile } from '../assets';
 import { requestCameraPermission } from '../scripts/permissions';
+import PdfListView from './PdfListView';
+import EmptyHome from  './EmptyHome';
 
 export const Home = ({ navigation }) => {
+  const [pdfList,  setPdfList] =  useState([]);
+  const applicationDirPath = `${RNFetchBlob.fs.dirs.SDCardDir}/Android/data/com.uscanner/files`;
+
+  useEffect(() => {
+    console.log('-------------- home')
+    RNFetchBlob.fs.ls(applicationDirPath)
+    .then(files => {
+      setPdfList(files)
+      console.log('pdf list #######################',  files);
+    })
+    .catch(err => console.log('error occured', err))
+  }, [])
+
   const checkPermissionAndNavigate = () => {
     requestCameraPermission()
       .then(() => {
@@ -32,30 +47,9 @@ export const Home = ({ navigation }) => {
           }}
         />
       </View>
-      <View style={{ flex: 1, justifyContent: 'center' }}>
-        <Image
-          source={noFile}
-          style={{ width: 192, height: 192, alignSelf: 'center' }}
-        />
-        <View
-          style={{
-            maxWidth: moderateScale(256),
-            alignSelf: 'center',
-            paddingTop: moderateScale(5),
-          }}>
-          <Label
-            text="Looks like you do not have any scans"
-            style={{ textAlign: 'center' }}
-            weight="bold"
-          />
-          <View height={moderateScale(4)} />
-          <Label
-            text="Scan a document from your camera or import one from gallery"
-            style={{ textAlign: 'center' }}
-            variant="medium"
-          />
-        </View>
-      </View>
+      {pdfList
+      ? <PdfListView pdfList={pdfList} sourcePath={applicationDirPath} />
+      : <EmptyHome />  }
       <View style={styles.scanButton}>
         <TouchableOpacity onPress={() => checkPermissionAndNavigate()}>
           <View style={styles.scanIcon}>

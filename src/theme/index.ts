@@ -113,17 +113,17 @@ export const sizes = {
     topNav: 40,
     header: 50,
     bottomBar: 40,
-    avatar: 60
+    avatar: 80
   },
 
   width: {
     inputText: '100%', // prefer local style instead
     breaker: 15,
     header: 50,
-    avatar: 60
+    avatar: 80
   },
 
-  tabIcon: 20,
+  tabIcon: 24,
   scanIcon: 24,
   miscIcons: 28,
   label: 14,
