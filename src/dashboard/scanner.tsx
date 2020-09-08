@@ -67,7 +67,6 @@ class Scanner extends React.Component {
       });
       exportImageToPdf(
         [res.uri],
-        'test',
         this.onExportSuccess,
         this.onExportFailure,
       );
@@ -80,10 +79,9 @@ class Scanner extends React.Component {
     }
   };
 
-  onCopySuccess = (destinationPath: string, pdfFileName: string) => {
+  onCopySuccess = (destinationPath: string) => {
     exportImageToPdf(
       [destinationPath],
-      pdfFileName,
       this.onExportSuccess,
       this.onExportFailure,
     );

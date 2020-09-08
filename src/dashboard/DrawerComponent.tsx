@@ -1,14 +1,22 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import { sizes, colors, spaces, borders } from '../theme'
 import { moderateScale } from 'react-native-size-matters'
 import { Label, Heading } from '../components'
 import CommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { screens } from '../navigator/constants'
 
-const Navigators = () => (
+const Navigators = ({ currentRouteName, navigation }) => (
   <View style={styles.drawerNavigators}>
-    <View style={styles.navigatorContainer}>
+    <TouchableOpacity
+      onPress={() => {
+        currentRouteName !== screens.home ? navigation.navigate(screens.home) : navigation.closeDrawer()
+      }}
+      style={{
+        ...styles.navigatorContainer,
+        backgroundColor: currentRouteName === screens.home ? colors.hover.primary : ''
+      }}
+    >
       <CommunityIcon
         name='home'
         size={moderateScale(sizes.tabIcon)}
@@ -19,22 +27,26 @@ const Navigators = () => (
           text={screens.home}
         />
       </View>
-    </View>
+    </TouchableOpacity>
 
-    <View style={styles.navigatorContainer}>
+    <View style={{
+      ...styles.navigatorContainer,
+    }}>
       <CommunityIcon
         name='file-pdf-box'
         size={moderateScale(sizes.tabIcon)}
         color={colors.tabIcon}
       />
-      <View style={styles.nameBreaker}>
+      <TouchableOpacity style={styles.nameBreaker}>
         <Label
           text={screens.exportToPdf}
         />
-      </View>
+      </TouchableOpacity>
     </View>
 
-    <View style={styles.navigatorContainer}>
+    <View style={{
+      ...styles.navigatorContainer,
+    }}>
       <CommunityIcon
         name='cloud-sync'
         size={moderateScale(sizes.tabIcon)}
@@ -50,6 +62,9 @@ const Navigators = () => (
 );
 
 const DrawerComponent = (props) => {
+  console.log('$$$$$$$$$4 drawer props $$$$$$', props);
+  const { state, navigation } = props;
+  const currentRouteName = state.routeNames[state.index];
   return (
     <View style={styles.container}>
       <View style={styles.userNameWrapper}>
@@ -64,7 +79,7 @@ const DrawerComponent = (props) => {
       </View>
 
       <View>
-        <Navigators />
+        <Navigators currentRouteName={currentRouteName} navigation={navigation} />
       </View>
 
       <View style={styles.bottomLabel}>

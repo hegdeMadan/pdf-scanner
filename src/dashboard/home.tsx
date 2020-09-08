@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import AntIcons from 'react-native-vector-icons/AntDesign';
 import { moderateScale } from 'react-native-size-matters';
 import RNFetchBlob from 'rn-fetch-blob';
@@ -15,11 +15,9 @@ export const Home = ({ navigation }) => {
   const applicationDirPath = `${RNFetchBlob.fs.dirs.SDCardDir}/Android/data/com.uscanner/files`;
 
   useEffect(() => {
-    console.log('-------------- home')
     RNFetchBlob.fs.ls(applicationDirPath)
     .then(files => {
       setPdfList(files)
-      console.log('pdf list #######################',  files);
     })
     .catch(err => console.log('error occured', err))
   }, [])
@@ -34,21 +32,23 @@ export const Home = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={{ position: 'absolute', top: 0, left: 0 }}>
-        <Header
-          leftIconName="menu"
-          textAlign="flex-start"
-          headerColor={colors.grey.superDark}
-          iconColor={colors.white}
-          iconSize={sizes.miscIcons}
-          onClick={() => navigation.openDrawer()}
-          styleProps={{
-            backgroundColor: colors.primry,
-          }}
-        />
-      </View>
-      {pdfList
-      ? <PdfListView pdfList={pdfList} sourcePath={applicationDirPath} />
+      <Header
+        leftIconName="menu"
+        textAlign="flex-start"
+        headerColor={colors.grey.superDark}
+        iconColor={colors.white}
+        iconSize={sizes.miscIcons}
+        onClick={() => navigation.openDrawer()}
+        styleProps={{
+          backgroundColor: colors.primry,
+        }}
+      />
+      {pdfList.length > 0
+      ? (
+        <View style={{ flex: 1 }}>
+          <PdfListView pdfList={pdfList} sourcePath={applicationDirPath} />
+        </View>
+      )
       : <EmptyHome />  }
       <View style={styles.scanButton}>
         <TouchableOpacity onPress={() => checkPermissionAndNavigate()}>

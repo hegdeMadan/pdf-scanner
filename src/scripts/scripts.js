@@ -27,14 +27,14 @@ export const getColor = (name) => {
 
 export const exportImageToPdf = async (
   filePathArr,
-  fileName,
   successCallback,
   failureCallback,
 ) => {
   try {
+    const pdfFileName = new Date().toLocaleDateString().split('/').join(' ');
     const options = {
       imagePaths: [...filePathArr],
-      name: `${fileName}.pdf`,
+      name: `${pdfFileName}.pdf`,
       quality: 1,
       // maxSize: {
       //   width: this.deviceWidth + 100,
@@ -55,14 +55,13 @@ export const copyImage = (imageData, successCallback, failureCallback) => {
   const pathArr = imageData.path.split('/');
   const fileName = pathArr[pathArr.length - 1];
   const destinationPath = `${RNFetchBlob.fs.dirs.PictureDir}/${fileName}`;
-  const pdfFileName = fileName.split('.')[0];
   const isStorageAccessible = requestStorageWritePermission();
   if (isStorageAccessible) {
     RNFetchBlob.fs
       .cp(imageData.path, destinationPath)
       .then(() => {
         console.log('copy success');
-        successCallback(destinationPath, pdfFileName);
+        successCallback(destinationPath);
       })
       .catch((err) => {
         console.log('error copying', err);
